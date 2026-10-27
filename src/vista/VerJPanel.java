@@ -42,6 +42,8 @@ public class VerJPanel extends javax.swing.JPanel {
         fechajLabel1 = new javax.swing.JLabel();
         puntosField = new javax.swing.JTextField();
         fechaField = new javax.swing.JTextField();
+        irPrimeroJButtom = new javax.swing.JButton();
+        irUltimoJButtom = new javax.swing.JButton();
 
         nombrejLabel1.setText("Nombre");
 
@@ -68,6 +70,12 @@ public class VerJPanel extends javax.swing.JPanel {
 
         fechaField.setEditable(false);
 
+        irPrimeroJButtom.setText("Ir Primero");
+        irPrimeroJButtom.addActionListener(this::irPrimeroJButtomActionPerformed);
+
+        irUltimoJButtom.setText("Ir Ultimo");
+        irUltimoJButtom.setActionCommand("Ir Ultimo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,11 +100,21 @@ public class VerJPanel extends javax.swing.JPanel {
                             .addComponent(puntosField)
                             .addComponent(fechaField))))
                 .addGap(35, 35, 35))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(irPrimeroJButtom)
+                .addGap(18, 18, 18)
+                .addComponent(irUltimoJButtom)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(irPrimeroJButtom)
+                    .addComponent(irUltimoJButtom))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombrejLabel1)
                     .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -153,6 +171,10 @@ public class VerJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_puntosFieldActionPerformed
 
+    private void irPrimeroJButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irPrimeroJButtomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_irPrimeroJButtomActionPerformed
+
     private void actualizarInformacion(){
         Cliente actual = controlActual.obtenerClienteActual();
         nombreField.setText(actual.getNombre());
@@ -166,6 +188,8 @@ public class VerJPanel extends javax.swing.JPanel {
     private javax.swing.JButton botonAtras;
     private javax.swing.JTextField fechaField;
     private javax.swing.JLabel fechajLabel1;
+    private javax.swing.JButton irPrimeroJButtom;
+    private javax.swing.JButton irUltimoJButtom;
     private javax.swing.JTextField nombreField;
     private javax.swing.JLabel nombrejLabel1;
     private javax.swing.JTextField numeroField;

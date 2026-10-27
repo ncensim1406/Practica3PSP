@@ -6,6 +6,8 @@ package vista;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import controlador.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import modelo.Cliente;
 /**
  *
@@ -48,7 +50,10 @@ public class AltaJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Fecha");
 
+        nombreField.addActionListener(this::nombreFieldActionPerformed);
+
         añadirjButton.setText("Añadir");
+        añadirjButton.addActionListener(this::añadirjButtonActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -62,11 +67,11 @@ public class AltaJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addGap(92, 92, 92)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(puntosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numeroField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(puntosField)
+                    .addComponent(numeroField)
+                    .addComponent(nombreField))
                 .addContainerGap(112, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -97,6 +102,19 @@ public class AltaJPanel extends javax.swing.JPanel {
                 .addGap(29, 29, 29))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nombreFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreFieldActionPerformed
+
+    private void añadirjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirjButtonActionPerformed
+        //Pulsar el boton añadir
+        LocalDate fechaSinFormato = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        System.out.println(fechaSinFormato);
+        Integer numero = Integer.valueOf(numeroField.getText());
+        controlActual.anadirCliente(nombreField.getText(),numero, puntosField.getText(),fechaSinFormato );
+
+    }//GEN-LAST:event_añadirjButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -25,11 +25,11 @@
                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
-                  <Component id="puntosField" min="-2" max="-2" attributes="0"/>
-                  <Component id="numeroField" min="-2" max="-2" attributes="0"/>
-                  <Component id="nombreField" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jDateChooser1" max="32767" attributes="0"/>
+                  <Component id="puntosField" alignment="0" max="32767" attributes="0"/>
+                  <Component id="numeroField" alignment="0" max="32767" attributes="0"/>
+                  <Component id="nombreField" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="112" max="32767" attributes="0"/>
           </Group>
@@ -92,6 +92,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="nombreField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nombreFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="numeroField">
     </Component>
@@ -103,6 +106,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="a&#xf1;adirjButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

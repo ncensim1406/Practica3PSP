@@ -21,11 +21,11 @@ public class Controlador1 {
     public Controlador1(){
         actual=0;
         this.lista = new ArrayList<>();
-        lista.add(new Cliente("Carlos Gómez", 104, "1500", LocalDate.of(2023, 5, 12)));
-        lista.add(new Cliente("Ana López", 101, "3200", LocalDate.of(2021, 11, 28)));
-        lista.add(new Cliente("Luis Martínez", 105, "450", LocalDate.of(2025, 2, 14)));
-        lista.add(new Cliente("María Rodríguez", 102, "890", LocalDate.of(2022, 8, 5)));
-        lista.add(new Cliente("Elena Belmonte", 103, "2100", LocalDate.of(2024, 6, 20)));
+        lista.add(new Cliente("Carlos Gómez", 104, "1500", LocalDate.of(2011, 5, 12)));
+        lista.add(new Cliente("Ana López", 101, "3200", LocalDate.of(2001, 11, 28)));
+        lista.add(new Cliente("Luis Martínez", 105, "450", LocalDate.of(2005, 2, 14)));
+        lista.add(new Cliente("María Rodríguez", 102, "890", LocalDate.of(2002, 8, 5)));
+        lista.add(new Cliente("Elena Belmonte", 103, "2100", LocalDate.of(2004, 6, 20)));
     }
     public boolean esVacia(){
         return lista.isEmpty();
