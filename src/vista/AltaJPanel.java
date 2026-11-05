@@ -15,12 +15,15 @@ import modelo.Cliente;
  */
 public class AltaJPanel extends javax.swing.JPanel {
     private Controlador1 controlActual;
+    private String textoErrorGuardado;
     /**
      * Creates new form AltaJPanel
      */
     public AltaJPanel(Controlador1 c) {
         initComponents();
         controlActual= c;
+        textoErrorGuardado=errorjLabel.getText();
+        errorjLabel.setText("");
     }
 
     /**
@@ -41,6 +44,7 @@ public class AltaJPanel extends javax.swing.JPanel {
         puntosField = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         añadirjButton = new javax.swing.JButton();
+        errorjLabel = new javax.swing.JLabel();
 
         jLabel1.setText("Nombre");
 
@@ -54,6 +58,9 @@ public class AltaJPanel extends javax.swing.JPanel {
 
         añadirjButton.setText("Añadir");
         añadirjButton.addActionListener(this::añadirjButtonActionPerformed);
+
+        errorjLabel.setForeground(new java.awt.Color(255, 0, 0));
+        errorjLabel.setText("ERROR: revisa los puntos y la fecha introducida");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -72,11 +79,16 @@ public class AltaJPanel extends javax.swing.JPanel {
                     .addComponent(puntosField)
                     .addComponent(numeroField)
                     .addComponent(nombreField))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(añadirjButton)
-                .addGap(30, 30, 30))
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(añadirjButton)
+                        .addGap(153, 153, 153))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(errorjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,9 +109,11 @@ public class AltaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(errorjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(añadirjButton)
-                .addGap(29, 29, 29))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -112,13 +126,22 @@ public class AltaJPanel extends javax.swing.JPanel {
         LocalDate fechaSinFormato = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         System.out.println(fechaSinFormato);
         Integer numero = Integer.valueOf(numeroField.getText());
-        controlActual.anadirCliente(nombreField.getText(),numero, puntosField.getText(),fechaSinFormato );
+        if (Test.comprobarFecha(fechaSinFormato) && Test.ComprobarPuntos(puntosField.getText())) {
+            controlActual.anadirCliente(nombreField.getText(),numero, puntosField.getText(),fechaSinFormato );
+            errorjLabel.setText("");
+            System.out.println("Se ha completado el alta");
+        }else{
+            
+            errorjLabel.setText(textoErrorGuardado);
+        }
+        
 
     }//GEN-LAST:event_añadirjButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton añadirjButton;
+    private javax.swing.JLabel errorjLabel;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

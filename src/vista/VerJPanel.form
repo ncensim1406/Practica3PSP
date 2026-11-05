@@ -47,6 +47,8 @@
               <Component id="irPrimeroJButtom" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="irUltimoJButtom" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="borrarClientejButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -58,6 +60,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="irPrimeroJButtom" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="irUltimoJButtom" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="borrarClientejButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -164,8 +167,18 @@
     <Component class="javax.swing.JButton" name="irUltimoJButtom">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ir Ultimo"/>
-        <Property name="actionCommand" type="java.lang.String" value="Ir Ultimo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="irUltimoJButtomActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="borrarClientejButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Borrar Cliente"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="borrarClientejButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

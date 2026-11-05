@@ -20,6 +20,8 @@ public class VerJPanel extends javax.swing.JPanel {
     public VerJPanel(Controlador1 c) {
         initComponents();
         controlActual= c;
+        actualizarInformacion();
+        botonAtras.setVisible(false);
         
     }
 
@@ -44,6 +46,7 @@ public class VerJPanel extends javax.swing.JPanel {
         fechaField = new javax.swing.JTextField();
         irPrimeroJButtom = new javax.swing.JButton();
         irUltimoJButtom = new javax.swing.JButton();
+        borrarClientejButton = new javax.swing.JButton();
 
         nombrejLabel1.setText("Nombre");
 
@@ -74,7 +77,10 @@ public class VerJPanel extends javax.swing.JPanel {
         irPrimeroJButtom.addActionListener(this::irPrimeroJButtomActionPerformed);
 
         irUltimoJButtom.setText("Ir Ultimo");
-        irUltimoJButtom.setActionCommand("Ir Ultimo");
+        irUltimoJButtom.addActionListener(this::irUltimoJButtomActionPerformed);
+
+        borrarClientejButton.setText("Borrar Cliente");
+        borrarClientejButton.addActionListener(this::borrarClientejButtonActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -105,6 +111,8 @@ public class VerJPanel extends javax.swing.JPanel {
                 .addComponent(irPrimeroJButtom)
                 .addGap(18, 18, 18)
                 .addComponent(irUltimoJButtom)
+                .addGap(18, 18, 18)
+                .addComponent(borrarClientejButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -113,7 +121,8 @@ public class VerJPanel extends javax.swing.JPanel {
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(irPrimeroJButtom)
-                    .addComponent(irUltimoJButtom))
+                    .addComponent(irUltimoJButtom)
+                    .addComponent(borrarClientejButton))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombrejLabel1)
@@ -172,8 +181,41 @@ public class VerJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_puntosFieldActionPerformed
 
     private void irPrimeroJButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irPrimeroJButtomActionPerformed
-        // TODO add your handling code here:
+        if (!controlActual.esPrimero()&&!controlActual.esUltimo()) {
+            controlActual.irPrimero();
+            actualizarInformacion();
+            botonAdelante.setVisible(true);
+            botonAtras.setVisible(false);
+        }
     }//GEN-LAST:event_irPrimeroJButtomActionPerformed
+
+    private void irUltimoJButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irUltimoJButtomActionPerformed
+        if (!controlActual.esPrimero()&&!controlActual.esUltimo()) {
+            controlActual.irUltimo();
+            actualizarInformacion();
+            botonAtras.setVisible(true);
+            botonAdelante.setVisible(false);
+        }
+    }//GEN-LAST:event_irUltimoJButtomActionPerformed
+
+    private void borrarClientejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarClientejButtonActionPerformed
+        if (!controlActual.esVacia()) {
+            if (controlActual.esPrimero()&&!controlActual.esUltimo()) {
+            controlActual.borrarCliente();
+            actualizarInformacion();
+            }
+            else if(controlActual.esPrimero()&&controlActual.esUltimo()) {
+                botonAdelante.setVisible(false);
+                botonAtras.setVisible(false);
+            }
+            else {
+                
+                controlActual.borrarCliente();
+                controlActual.retroceder();
+                actualizarInformacion();
+            }
+        }
+    }//GEN-LAST:event_borrarClientejButtonActionPerformed
 
     private void actualizarInformacion(){
         Cliente actual = controlActual.obtenerClienteActual();
@@ -184,6 +226,7 @@ public class VerJPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton borrarClientejButton;
     private javax.swing.JButton botonAdelante;
     private javax.swing.JButton botonAtras;
     private javax.swing.JTextField fechaField;

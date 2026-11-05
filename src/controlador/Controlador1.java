@@ -37,7 +37,7 @@ public class Controlador1 {
         actual--;
     }
     public void irPrimero(){
-        actual=1;
+        actual=0;
     }
     public void irUltimo(){
         actual=lista.size()-1;
@@ -51,8 +51,8 @@ public class Controlador1 {
     public boolean esPrimero(){
         return actual == 0;
     }
-    public void borrarCliente(int num){
-        lista.remove(num);
+    public void borrarCliente(){
+        lista.remove(actual);
         
     }
     public Cliente obtenerClienteActual(){

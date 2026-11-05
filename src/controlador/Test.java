@@ -22,7 +22,7 @@ public class Test {
 
     
     public static boolean ComprobarPuntos(String puntos) {
-        if(Integer.parseInt(puntos)<=0 && Integer.parseInt(puntos)>=1000){
+        if(Integer.parseInt(puntos)>=0 && Integer.parseInt(puntos)<=1000){
             return true;
         }else{
             return false;
