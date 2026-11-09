@@ -181,7 +181,7 @@ public class VerJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_puntosFieldActionPerformed
 
     private void irPrimeroJButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irPrimeroJButtomActionPerformed
-        if (!controlActual.esPrimero()&&!controlActual.esUltimo()) {
+        if (!(controlActual.esPrimero()&&controlActual.esUltimo())) {
             controlActual.irPrimero();
             actualizarInformacion();
             botonAdelante.setVisible(true);
@@ -190,7 +190,7 @@ public class VerJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_irPrimeroJButtomActionPerformed
 
     private void irUltimoJButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irUltimoJButtomActionPerformed
-        if (!controlActual.esPrimero()&&!controlActual.esUltimo()) {
+        if (!(controlActual.esPrimero()&&controlActual.esUltimo())) {
             controlActual.irUltimo();
             actualizarInformacion();
             botonAtras.setVisible(true);
