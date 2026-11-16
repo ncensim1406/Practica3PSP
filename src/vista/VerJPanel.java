@@ -5,6 +5,7 @@
 package vista;
 
 import controlador.*;
+import java.awt.Color;
 import modelo.Cliente;
 
 /**
@@ -47,12 +48,14 @@ public class VerJPanel extends javax.swing.JPanel {
         irPrimeroJButtom = new javax.swing.JButton();
         irUltimoJButtom = new javax.swing.JButton();
         borrarClientejButton = new javax.swing.JButton();
+        cambiarColor = new javax.swing.JButton();
 
         nombrejLabel1.setText("Nombre");
 
         numerojLabel2.setText("Numero");
 
         nombreField.setEditable(false);
+        nombreField.setForeground(new java.awt.Color(255, 0, 0));
         nombreField.addActionListener(this::nombreFieldActionPerformed);
 
         numeroField.setEditable(false);
@@ -82,6 +85,9 @@ public class VerJPanel extends javax.swing.JPanel {
         borrarClientejButton.setText("Borrar Cliente");
         borrarClientejButton.addActionListener(this::borrarClientejButtonActionPerformed);
 
+        cambiarColor.setText("Cambiar Color");
+        cambiarColor.addActionListener(this::cambiarColorActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,6 +97,8 @@ public class VerJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(botonAtras)
+                        .addGap(60, 60, 60)
+                        .addComponent(cambiarColor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonAdelante))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -140,10 +148,15 @@ public class VerJPanel extends javax.swing.JPanel {
                     .addComponent(fechajLabel1)
                     .addComponent(fechaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonAtras)
-                    .addComponent(botonAdelante))
-                .addGap(30, 30, 30))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonAtras)
+                            .addComponent(botonAdelante))
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cambiarColor)
+                        .addGap(18, 18, 18))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -217,6 +230,15 @@ public class VerJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_borrarClientejButtonActionPerformed
 
+    private void cambiarColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarColorActionPerformed
+        // TODO add your handling code here:
+        if (nombreField.getForeground()==Color.blue) {
+            nombreField.setForeground(Color.red);
+        }else{
+            nombreField.setForeground(Color.blue);
+        }
+    }//GEN-LAST:event_cambiarColorActionPerformed
+
     private void actualizarInformacion(){
         Cliente actual = controlActual.obtenerClienteActual();
         nombreField.setText(actual.getNombre());
@@ -229,6 +251,7 @@ public class VerJPanel extends javax.swing.JPanel {
     private javax.swing.JButton borrarClientejButton;
     private javax.swing.JButton botonAdelante;
     private javax.swing.JButton botonAtras;
+    private javax.swing.JButton cambiarColor;
     private javax.swing.JTextField fechaField;
     private javax.swing.JLabel fechajLabel1;
     private javax.swing.JButton irPrimeroJButtom;
